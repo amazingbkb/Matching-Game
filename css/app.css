@@ -1,0 +1,223 @@
+html {
+    box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: inherit;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    font-family: 'Coda', cursive;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+h1 {
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 300;
+}
+
+/*
+ * Styles for the deck of cards
+ */
+
+.deck {
+    width: 660px;
+    min-height: 680px;
+    background: linear-gradient(160deg, #02ccba 0%, #aa7ecd 100%);
+    padding: 32px;
+    border-radius: 10px;
+    box-shadow: 12px 15px 20px 0 rgba(46, 61, 73, 0.5);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    margin: 0 0 3em;
+    perspective: 1000px;
+}
+
+.deck .card {
+    height: 125px;
+    width: 125px;
+    background: #2e3d49;
+    font-size: 0;
+    color: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 5px 2px 20px 0 rgba(46, 61, 73, 0.5);
+    transform:  scale(1);
+    transform-style: preserve-3d;
+    transition: transform .5s;
+}
+
+.deck .card.open {
+    transform: rotateY(180deg);
+    background: #02b3e4;
+    cursor: default;
+}
+
+.deck .card.show {
+    font-size: 33px;
+}
+
+.deck .card.match {
+    cursor: default;
+    background: #02ccba;
+    font-size: 33px;
+}
+
+.stop-event {
+    pointer-events: none;
+}
+/*
+ * Styles for the Score Panel
+ */
+
+.score-panel {
+    text-align: left;
+    width: 345px;
+    margin-bottom: 10px;
+}
+
+.score-panel .stars {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    margin: 0 5px 0 0;
+}
+
+.score-panel .stars li {
+    list-style: none;
+    display: inline-block;
+}
+
+.score-panel .restart {
+    float: right;
+    cursor: pointer;
+}
+
+.score-panel .timer {
+    list-style: none;
+    display: inline-block;
+    margin: 2px;
+    padding-left: 20px;
+}
+
+/* Modal and styling*/
+
+.popup {
+    position: fixed;
+    display: none;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: rgba(70, 69, 69, 0.342);
+}
+
+.modal-message {
+    position: fixed;
+    background-color: #fff;
+    top: 40%;
+    left: 25%;
+    width: 600px;
+    padding: 30px;
+    text-align: center;
+    border-radius: 10px;
+    box-shadow: 1px 1px 40px #cfbaba;
+    list-style: none;
+}
+
+.modal-message h1 {
+    margin: auto;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.button {
+    color: #fff;
+    background-color: #02b3e4;
+    width: 120px;
+    height: 30px;
+    border: 1px solid #e9edef;
+    border-radius: 10px;
+    box-shadow: 1px 2px 4px rgba(235, 235, 235, 0.48);
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.button:hover {
+    background-color: #02b3e4}
+
+.button:active {
+    background-color: #02b3e4;
+    box-shadow: 0 5px rgb(173, 163, 163);
+    transform: translateY(4px);
+}
+
+#starRating li {
+	display: inline-block;
+}
+
+/* Media Queries  */
+
+@media screen and (max-width: 600px) {
+    .score-panel {
+        width: 380px;
+        margin-bottom: 10px;
+        font-size: 1.3em;
+        text-align: left;
+    }
+    .deck {
+        width: 400px;
+        padding: 20px;
+        min-height: 400px;
+    }
+    .deck .card {
+        height: 80px;
+        width: 80px;
+    }
+    .modal-message {
+        width: 90%;
+        left: 5%;
+        top: 25%;
+        margin: auto 0;
+    }
+}
+
+@media screen and (max-width: 400px) {
+    .score-panel {
+        text-align: left;
+        width: 250px;
+        margin-bottom: 10px;
+        font-size: 1em;
+    }
+    .deck {
+        width: 330px;
+        min-height: 350px;
+        box-shadow: 6px 7px 10px 0 rgba(42, 71, 95, 0.404);
+        padding: 10px;
+    }
+    .deck .card {
+        height: 70px;
+        width: 70px;
+      }
+}
