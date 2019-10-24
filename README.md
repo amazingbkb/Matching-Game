@@ -17,8 +17,8 @@ A card board that contains 16 shuffled cards (8 pairs) are giving every game. Ea
 
 Star Rating is based on how many moves a player made to complete the game.
 
-* * * Under 16 moves, player earns 3 stars.
-* * Under 20 moves, player earns 2 stars.
+* Under 16 moves, player earns 3 stars.
+* Under 20 moves, player earns 2 stars.
 * Over 20 moves, player earns 1 star.
 
 ## Credits
