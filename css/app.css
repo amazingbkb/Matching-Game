@@ -17,7 +17,8 @@ body {
 }
 
 body {
-    background: #ffffff url('../img/geometry2.png'); /* Background pattern from Subtle Patterns */
+    background: #ffffff url('../img/background.gif'); /* Background pattern from Subtle Patterns */
+    background-size: cover;
     font-family: 'Coda', cursive;
 }
 
