@@ -42,10 +42,18 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in another function that you call from this one)
  */
 
+ // Added sound effects
+var flip = new Audio('sounds/open.wav')
+var sameCards = new Audio('sounds/match.wav')
+var unmatch = new Audio('sounds/unmatch.wav')
+var endGame = new Audio('sounds/win.wav')
+var background = new Audio('sounds/background.mp3')
 
 
 // Create a deck with shuffled cards and adding eventlistener
 function initGame() {
+    background.play();
+    background.loop = true;
     const deck = document.querySelector('#deck');
     deck.innerHTML = "";
     const newDeck = document.createElement('ul');
@@ -72,7 +80,7 @@ var matchCards= [];
 
 // Opening cards to check if they match or not
 function onclick(e) {
-
+    flip.play();
     let card = e.target;
 
     if (card.classList.contains("card") && !card.classList.contains("open", "show", "match")) {
@@ -81,11 +89,13 @@ function onclick(e) {
             
         //if match, stays open
         if (openCards.length === 2) {
+            
             // To prevent open more cards while matching
             deck.classList.add("stop-event");
             // Moves start counting when matching first pairs
             moveCount();
             if (openCards[0].innerHTML === openCards[1].innerHTML) {
+                sameCards.play();
                 openCards[0].classList.add("match");               
                 openCards[1].classList.add("match");
 
@@ -95,6 +105,7 @@ function onclick(e) {
                 openCards = [];
                 deck.classList.remove("stop-event");
             } else {
+                unmatch.play();
                 //if unmatch, hide
                 setTimeout (function() {
                     openCards.forEach(function(card) {
@@ -213,8 +224,10 @@ restart.addEventListener("click", startGame);
 const popup = document.querySelector('.popup');
 
 function congrats() {
+    
     // All cards opened game finished
     if (matchCards.length === 16) {
+        endGame.play();
         // Showing the stats to the player
         totalTime = timer.innerHTML;
         var starRating = document.querySelector(".stars").innerHTML;
@@ -238,3 +251,4 @@ playAgain.addEventListener('click', function () {
     popup.style.display = 'none';
     startGame();   
 })
+
